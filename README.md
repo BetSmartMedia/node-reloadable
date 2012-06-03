@@ -1,4 +1,4 @@
-# reloadable
+# reloadable [![Build Status](https://secure.travis-ci.org/BetSmartMedia/node-reloadable.png?branch=master)](http://travis-ci.org/BetSmartMedia/node-reloadable)
 
 This is a simple wrapper around a module that allows it to be reloaded on
 signals, which is particularly useful when using a module for configuration.
