@@ -4,6 +4,10 @@
   "description": "Wrap modules so they can be reloaded via external signal or in process. Useful for config.",
 	"tags": ["config", "reloadable", "configuration"],
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BetSmartMedia/node-reloadable.git"
+  },
   "dependencies": {},
   "devDependencies": {},
   "optionalDependencies": {},
