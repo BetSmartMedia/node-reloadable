@@ -1,7 +1,9 @@
-inspect = require('util').inspect
+module.exports = reloadable
 
-module.exports = function (config_path, opts) {
-	var settings = {
+var inspect = require('util').inspect
+
+function reloadable (module_path, opts) {
+	var facade = {
 		toJSON: function() { return this.__proto__ },
 		inspect: function() { return inspect(this.__proto__) },
 	}
@@ -9,17 +11,21 @@ module.exports = function (config_path, opts) {
 	opts || (opts = {})
 	opts.error || (opts.error = defaultErrorHandler)
 
-	function reload() {
-		delete require.cache[require.resolve(config_path)]
-		try { settings.__proto__ = require(config_path) }
-		catch (err) { opts.error(err, config_path) }
+	var _reload = opts.reload || function refreshrequire () {
+		delete require.cache[require.resolve(module_path)]
+		return require(module_path)
+	}
+
+	function reload () {
+    try { facade.__proto__ = _reload() }
+		catch (err) { opts.error(err, module_path) }
 	}
 
 	if (opts.signal) process.on(opts.signal, reload)
-	if (opts.exposeReload) settings.reload = reload
+	if (opts.exposeReload) facade.reload = reload
 
 	reload()
-	return settings
+	return facade
 }
 
 function defaultErrorHandler (err, path) {
