@@ -2,8 +2,12 @@
   "author": "Stephen Sugden <stephen@betsmartmedia.com>",
   "name": "reloadable",
   "description": "Wrap modules so they can be reloaded via external signal or in process. Useful for config.",
-	"tags": ["config", "reloadable", "configuration"],
-  "version": "0.0.1",
+  "tags": [
+    "config",
+    "reloadable",
+    "configuration"
+  ],
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/BetSmartMedia/node-reloadable.git"
@@ -11,9 +15,9 @@
   "dependencies": {},
   "devDependencies": {},
   "optionalDependencies": {},
-	"scripts": {
+  "scripts": {
     "test": "node test.js"
-	},
+  },
   "engines": {
     "node": "*"
   }
